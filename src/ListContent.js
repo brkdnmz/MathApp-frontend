@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import ContentRightClickMenu from "./ContentRightClickMenu";
 import Content from "./Content";
-import {mathjaxReRender} from "./funcs";
+//import {mathjaxReRender} from "./funcs";
 
 function ListContent(props) {
     const contents = props.contents;
@@ -26,7 +26,7 @@ function ListContent(props) {
     return (
         <>
             {
-                contents.map((content, i) => {
+                contents.map((content) => {
                     return (
                         <Content content={content} onRightClick={onRightClick} key={content.id} />
                     );
