@@ -2,13 +2,13 @@ import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import ContentRightClickMenu from "./ContentRightClickMenu";
 import Content from "./Content";
-//import {mathjaxReRender} from "./funcs";
+import {mathjaxReRender} from "./funcs";
 
 function ListContent(props) {
     const contents = props.contents;
     const [rightClickedContent, setRightClickedContent] = useState();
     useEffect(() => {
-        //mathjaxReRender();
+        mathjaxReRender("contentList");
     });
     const contextMenuRef = useRef();
 
@@ -24,7 +24,7 @@ function ListContent(props) {
     };
 
     return (
-        <>
+        <div id={"contentList"}>
             {
                 contents.map((content) => {
                     return (
@@ -38,7 +38,7 @@ function ListContent(props) {
                 contextMenuRef={contextMenuRef}
                 updateContents={props.updateContents}
             />
-        </>
+        </div>
     );
 }
 
