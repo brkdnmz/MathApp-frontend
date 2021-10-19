@@ -2,14 +2,13 @@ import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import ContentRightClickMenu from "./ContentRightClickMenu";
 import Content from "./Content";
+import {mathjaxReRender} from "./funcs";
 
 function ListContent(props) {
     const contents = props.contents;
     const [rightClickedContent, setRightClickedContent] = useState();
     useEffect(() => {
-        const hub = window.MathJax.Hub;
-        if(hub)
-            hub.Queue(["Typeset", hub]);
+        //mathjaxReRender();
     });
     const contextMenuRef = useRef();
 
@@ -37,7 +36,7 @@ function ListContent(props) {
                 content={rightClickedContent}
                 id={"contentRightClickMenu"}
                 contextMenuRef={contextMenuRef}
-                onContextMenuButtonClick={props.onContextMenuButtonClick}
+                updateContents={props.updateContents}
             />
         </>
     );

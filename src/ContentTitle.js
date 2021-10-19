@@ -6,6 +6,7 @@ function ContentTitle(props) {
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target={props.dataBsTarget}
+                style={{whiteSpace: "pre-wrap"}}
             >
                 {props.title}
             </button>

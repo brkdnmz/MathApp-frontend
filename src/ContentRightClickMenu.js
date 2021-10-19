@@ -11,15 +11,15 @@ function ContentRightClickMenu(props) {
         const operation = button.val();
         if(operation === "delete"){
             axios
-                .delete(`http://localhost:8080/api/content/${contentId}/delete`)
+                .delete(`https://brkdnmz-math-app.herokuapp.com/api/content/${contentId}/delete`)
                 .then()
                 .catch(error => {
                     console.log(error);
                 });
-        }else if(operation === "modify"){
+        }else if(operation === "edit"){
             /* TODO */
         }
-        props.onContextMenuButtonClick(contentId, operation);
+        props.updateContents(contentId, operation);
     };
 
     return (
@@ -41,7 +41,7 @@ function ContentRightClickMenu(props) {
             <button
                 type={"button"}
                 className={"list-group-item list-group-item-action list-group-item-warning"}
-                value={"modify"}
+                value={"edit"}
                 onClick={onButtonClick}
             >
                 Modify
