@@ -1,5 +1,5 @@
 import $ from "jquery";
-import axios from "axios";
+import {deleteContent} from "./api";
 
 function ContentRightClickMenu(props) {
     const content = props.content;
@@ -10,8 +10,7 @@ function ContentRightClickMenu(props) {
         const contentId = parseInt(content.id.slice(idPrefix.length));
         const operation = button.val();
         if(operation === "delete"){
-            axios
-                .delete(`https://brkdnmz-math-app.herokuapp.com/api/content/${contentId}/delete`)
+            deleteContent(contentId)
                 .then()
                 .catch(error => {
                     console.log(error);

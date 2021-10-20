@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import $ from "jquery";
 import ContentRightClickMenu from "./ContentRightClickMenu";
 import Content from "./Content";
-import {mathjaxReRender} from "./funcs";
+import {mathjaxReRender} from "./util_funcs";
 
 function ListContent(props) {
     const contents = props.contents;

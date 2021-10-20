@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {mathjaxReRender, resizeElem} from "./funcs";
+import {mathjaxReRender, resizeElem} from "./util_funcs";
 import $ from "jquery";
 
 function ContentPreview(props) {

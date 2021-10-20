@@ -2,19 +2,19 @@ import CreateContent from './CreateContent';
 import './index.css';
 import ListContent from "./ListContent";
 import {useEffect, useState} from "react";
-import axios from "axios";
+import {getAllContents} from "./api";
 
 function App() {
     const [contents, setContents] = useState([]);
 
     useEffect(() => {
-        axios
-            .get("https://brkdnmz-math-app.herokuapp.com/api/content/all")
-            .then(response => {
-                setContents(response.data);
-            }).catch(error => {
+        getAllContents()
+            .then(allContents => {
+                setContents(allContents);
+            })
+            .catch(error => {
                 console.log(error);
-            });
+            })
     }, []);
 
     const updateContents = (contentId, operation) => {
@@ -26,7 +26,7 @@ function App() {
                 })
             );
         }else if(operation === "edit"){
-
+            /* TODO */
         }
     }
 

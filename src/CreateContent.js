@@ -3,10 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ContentInput from "./ContentInput";
 import CreateContentButton from "./CreateContentButton";
 import $ from "jquery";
-import axios from "axios";
 import {useRef, useState} from "react";
 import PreviewContentButton from "./PreviewContentButton";
 import ContentPreview from "./ContentPreview";
+import {addContent} from "./api";
+
 function CreateContent(props) {
     const createContent = props.setContents;
     const contentInputRef = useRef();
@@ -34,15 +35,9 @@ function CreateContent(props) {
         titleElem.val(null);
         bodyElem.val(null);
         var newContent = {title: title, body: body};
-        axios
-            .post(
-                "https://brkdnmz-math-app.herokuapp.com/api/content/save",
-                JSON.stringify(newContent),
-                {headers: {'Content-Type': 'application/json'}}
-            )
-            .then(response => {
-                newContent = response.data;
-                createContent(newContent);
+        addContent(newContent)
+            .then(addedContent => {
+                createContent(addedContent);
             })
             .catch(error => {
                 console.log(error);

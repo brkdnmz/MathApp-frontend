@@ -1,4 +1,4 @@
-import {resizeElem} from "./funcs";
+import {resizeElem} from "./util_funcs";
 
 function AutoResizableTextArea(props) {
     return (
