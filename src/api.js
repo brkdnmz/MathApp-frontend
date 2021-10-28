@@ -1,8 +1,12 @@
 import axios from "axios";
 
+const API_URL = "https://brkdnmz-math-app-backend.herokuapp.com/api/";
+function createUrl(suffix){
+    return API_URL + suffix;
+}
 export function getAllContents(){
     return axios
-        .get("https://brkdnmz-math-app.herokuapp.com/api/content/all")
+        .get(createUrl("content/all"))
         .then(response => {
             console.log("getAllContents successful");
             return response.data;
@@ -14,7 +18,7 @@ export function getAllContents(){
 
 export function deleteContent(contentId){
     return axios
-        .delete(`https://brkdnmz-math-app.herokuapp.com/api/content/${contentId}/delete`)
+        .delete(createUrl(`content/${contentId}/delete`))
         .then(() => {
             console.log("deleteContent successful");
         })
@@ -26,7 +30,7 @@ export function deleteContent(contentId){
 export function addContent(newContent){
     return axios
         .post(
-            "https://brkdnmz-math-app.herokuapp.com/api/content/save",
+            createUrl("content/save"),
             JSON.stringify(newContent),
             {headers: {'Content-Type': 'application/json'}}
         )
